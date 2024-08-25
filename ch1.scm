@@ -1,3 +1,5 @@
+;;; conditional syntax / special form 
+
 (define (abs x)
   ( cond ((> x 0) x)
          ((< x 0) (- x))
@@ -22,6 +24,8 @@
 ; (define (:- f x)) 不能定义出和Haskell中一样的-:的原因是, lisp中的函数调用都是前缀调用
 ; reason why we cannot define `-:` like in Haskell: lisp's syntax of prefix functional application  
 
+;;; square root program
+
 (define (square x) (* x x))
 
 (define (sqrt x) (sqrt-iter 1.0 x))
@@ -43,4 +47,12 @@
 
 (define (average x y)
     (/ (+ x y) 2)
+)
+
+
+;;; internal definitions
+
+(define (avr-and-add3 x y)
+    (define (avr x y) (/ (+ x y) 2))
+    (+ (avr x y) 3)
 )
