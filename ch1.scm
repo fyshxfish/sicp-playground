@@ -1,4 +1,8 @@
-;;; conditional syntax / special form 
+#|
+Section 1.1
+|#
+
+;;; conditional expression / special form 
 
 (define (abs x)
   ( cond ((> x 0) x)
@@ -78,3 +82,7 @@
 
     (sqrt-iter 1.0)
 )
+
+#| 
+Section 1.2
+|#
