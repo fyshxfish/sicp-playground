@@ -20,4 +20,5 @@
 
 
 ; (define (:- f x)) 不能定义出和Haskell中一样的-:的原因是, lisp中的函数调用都是前缀调用
+; reason why we cannot define `-:` like in Haskell: lisp's syntax of prefix functional application  
 
