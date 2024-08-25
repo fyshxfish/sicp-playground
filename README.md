@@ -2,19 +2,18 @@
 
 ## Enviroment Set-up
 
-### Macos 
+MacOS:
 
 ```bash
 brew install mit-scheme
 ```
 
-### Ubuntu
+Ubuntu:
 
 ```bash
 sudo apt-get update 
 sudo apt-get install mit-scheme
 ```
-
 
 ## Basics
 
