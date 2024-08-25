@@ -29,4 +29,8 @@ Load a scheme file in repl:
 1 ] => (load "path/to/file")
 ```
 
+Clear the screen: 
+
+cmd+k (MacOS)
+
 
