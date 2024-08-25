@@ -10,15 +10,19 @@ brew install mit-scheme
 
 ### Ubuntu
 
-[TODO]
+```bash
+sudo apt-get update 
+sudo apt-get install mit-scheme
+```
+
+
+## Basics
 
 Enter the scheme repl:
 
 ```bash
 mit-scheme
 ```
-
-## Basics
 
 Load a scheme file in repl:
 
