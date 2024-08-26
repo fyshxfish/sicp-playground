@@ -38,3 +38,39 @@ Section 1.3
     (define (init a) (+ a (/ dx 2)))
     (* dx (sum (init a) b f update))
 )
+
+
+;;; 1.3.2 Constructing precedures with `lambda`
+
+(define (integral-new f a b dx)
+    (* dx (sum 
+            (+ a (/ dx 2.0)) 
+            b 
+            f 
+            (lambda (x) (+ x dx))   ; update 
+          )
+    )
+)
+
+(define (f x y)
+    (let ( ( a ( + 1 (* x y)))
+           ( b ( - 1 y))
+         )
+     (+ (* x (* a a))
+        (* y b)
+        (* a b)
+     )
+    )
+)
+
+(define val 
+    (+     (let ((x 4) (y 10)) 
+       (+ x y)
+           ) 
+       100)
+)
+
+
+(define (h g) (g 2))
+
+;;; 1.3.3
