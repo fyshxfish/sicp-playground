@@ -1,6 +1,6 @@
 # sicp-playground
 
-## Enviroment Set-up
+## Scheme Enviroment Set-up
 
 MacOS:
 
@@ -15,7 +15,7 @@ sudo apt-get update
 sudo apt-get install mit-scheme
 ```
 
-## Basics
+## REPL Basics
 
 Enter the scheme repl:
 
