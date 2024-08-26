@@ -113,5 +113,22 @@ Section 1.3
     )
 )
 
+;;; fixed point 
+
+(define tolerance 0.00001)
+
+(define (search-fixed-point f x)
+    (define (close-enough? v1 v2)
+        ( < 
+            (abs (- v1 v2))
+            tolerance
+        )
+    )
+
+    (if (close-enough? x (f x)) 
+        x
+        (search-fixed-point f (f x))
+    )
+)
 
 

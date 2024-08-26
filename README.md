@@ -17,20 +17,24 @@ sudo apt-get install mit-scheme
 
 ## REPL Basics
 
-Enter the scheme repl:
+1. Enter the scheme repl:
 
-```bash
-mit-scheme
-```
+    ```bash
+    mit-scheme
+    ```
 
-Load a scheme file in repl:
+2. Load a scheme file in repl:
 
-```
-1 ] => (load "path/to/file")
-```
+    ```
+    1 ] => (load "path/to/file")
+    ```
 
-Clear the screen: 
+3. Clear the screen: 
 
-cmd+k (MacOS)
+    cmd+k (MacOS)
+
+<!-- 4. You don't have to RESTART if enter an illegal statement in REPL.  -->
+
+
 
 
