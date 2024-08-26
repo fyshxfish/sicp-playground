@@ -73,4 +73,52 @@ Section 1.3
 
 (define (h g) (g 2))
 
-;;; 1.3.3
+;; 1.3.3
+
+;;; find zero point (half interval)
+
+(define (avr x y)
+    (/ (+ x y) 2)
+)
+
+(define (search f neg-point pos-point)
+    (define (close-enough? a b)
+        (< 
+            (abs (- a b)) 
+            0.001
+        )
+    )
+
+    (let (
+            (mid (avr pos-point neg-point))
+         )
+        (cond 
+              ((close-enough? pos-point neg-point) mid)
+              ((positive? (f mid)) (search f neg-point mid))
+              (else (search f mid pos-point))
+        )
+    )
+)
+
+(define (half-interval-search f a b)
+    ( let (
+            (a-val (f a))
+            (b-val (f b))
+          )
+      (cond
+            ((and (negative? a-val) (positive? b-val)) (search f a b) )
+            ((and (negative? b-val) (positive? a-val)) (search f b a) )
+            (else (error "f(a) * f(b) > 0. params:" a b))
+
+      
+      
+      )
+        
+
+        
+    )
+
+)
+
+
+
