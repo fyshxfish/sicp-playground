@@ -131,4 +131,15 @@ Section 1.3
     )
 )
 
+;- test with: (search-fixed-point (lambda (x) (+ (cos x) (sin x))) 1.0)
+
+;;; find square root with fixed point 
+
+(define (sqrt x)
+    (search-fixed-point 
+        (lambda (y) (/ (+ y (/ x y)) 2.0)) ; if replace 2.0 with 2, the return value will be a fraction
+        1.0
+    )
+)
+
 

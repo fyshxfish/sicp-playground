@@ -33,7 +33,13 @@ sudo apt-get install mit-scheme
 
     cmd+k (MacOS)
 
-<!-- 4. You don't have to RESTART if enter an illegal statement in REPL.  -->
+<!-- 4. You don't have to RESTART if enter an illegal statement in REPL.  
+    
+    You can keep going despite the error. -->
+
+4. If your REPL hangs after you enter a line of code: 
+    
+    Check whether your parentheses are properly matched.
 
 
 
