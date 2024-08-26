@@ -109,15 +109,8 @@ Section 1.3
             ((and (negative? a-val) (positive? b-val)) (search f a b) )
             ((and (negative? b-val) (positive? a-val)) (search f b a) )
             (else (error "f(a) * f(b) > 0. params:" a b))
-
-      
-      
       )
-        
-
-        
     )
-
 )
 
 
