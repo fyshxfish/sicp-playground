@@ -41,6 +41,8 @@ sudo apt-get install mit-scheme
     
     Check whether your parentheses are properly matched.
 
+5. Scheme is case-insensitive.
+
 
 ## Resources 
 
