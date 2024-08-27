@@ -201,5 +201,12 @@ Section 1.3
 Section 1.3.4 procedures as returned values 
 |#
 
+(define (average x y)
+    (/ (+ x y) 2)
+)
 
+(define (average-dump f)
+    (lambda (x) (average x (f x)))
+)
 
+;- (average-dump square)
