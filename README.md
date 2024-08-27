@@ -63,6 +63,8 @@ sudo apt-get install mit-scheme
     ;Value: 55
     ```
 
+    (So what exactly is this compound-procedure? machine code, code evaluated by means of substitute model, or something?)
+
 
 ## Resources 
 
