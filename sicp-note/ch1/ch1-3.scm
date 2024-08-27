@@ -210,3 +210,100 @@ Section 1.3.4 procedures as returned values
 )
 
 ;- (average-dump square)
+
+(define (cube-sqrt x)
+    (search-fixed-point 
+        (average-dump (lambda (y) (/ x (square y))))
+        1.0
+    )
+)
+
+
+;;; express the idea of derivative
+
+(define dx 0.00001)
+
+(define (deriv g)
+    (lambda (x)    
+       (/ (- (g (+ x dx))
+           (g x) 
+          )
+          dx
+       )
+    )        
+)
+
+;test> ((deriv cube) 1)
+
+;: newton-method: a solution of the equation g(x) = 0
+;: is a fixed point of the function x -> f(x)
+;: f(x) defined as below
+
+(define (newton-transform g)
+    (lambda (x) (- x (/ (g x) ((deriv g) x))))
+)
+
+(define (newton-method g guess)
+    (search-fixed-point (newton-transform g) guess)
+)
+
+;> E 1.40
+
+(define (cubic a b c)
+    (lambda (x) 
+            (+ 
+                (* x x x)
+                (* a x x)
+                (* b x)
+                c
+            )
+    )
+)
+
+(define x140
+    (newton-method (cubic 1 1 0) 1.0)
+)
+
+(define (sqrt x)
+    (newton-method 
+        (lambda (y) (- x (square y)))
+        1.0
+    )
+)
+
+(define (fixed-point-transform g transform guess)
+    (search-fixed-point (transform g) guess)
+)
+
+(define (sqrt x)
+    (fixed-point-transform 
+        (lambda (y) (/ x y))
+        average-dump
+        1.2
+    )
+)
+
+(define (sqrt x)
+    (fixed-point-transform 
+        (lambda (y) (- x (square y)))
+        newton-transform
+        1.4
+    )
+)
+
+;> E 1.41
+
+(define (double f)
+    (lambda (x)
+        (f (f x))
+    )
+)
+
+;test> (((double (double double)) inc) 5)
+
+:> E 1.42
+(define (compose f g)
+    (lambda (x) (f (g x)))
+)
+
+;test> ((compose square inc) 6)

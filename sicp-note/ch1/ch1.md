@@ -38,5 +38,8 @@ Not the same thing.
 
     Conclusion: BE CAREFUL WITH PARENTHESES. 
 
+## about/define **first class**
+
+> Elements with the fewest restrictions are said to have *first-class* status. (sicp(2nd edition) page 102)
 
 

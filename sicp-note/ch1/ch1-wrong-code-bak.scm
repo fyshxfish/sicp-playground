@@ -21,3 +21,12 @@
     )
 )
 
+;;; xxx
+(define (sqrt x)
+    (fixed-point-transform 
+        (lambda (y) (/ x (square y)))   ; > `sqrt 2`: why output is inifinite -nan.0? imagenary number?; `/` can be corrected to `-` 
+        newton-transform
+        1.4
+    )
+)
+

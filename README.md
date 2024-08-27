@@ -1,5 +1,7 @@
 # sicp-playground
 
+> Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away. -- Antoine de Saint-Exupéry
+
 ## Scheme Enviroment Set-up
 
 MacOS:
@@ -42,6 +44,8 @@ sudo apt-get install mit-scheme
     Check whether your parentheses are properly matched.
 
 5. Scheme is case-insensitive.
+
+    So `(LoAd "path/to/file.scm")`/`(DEFINE x 1)`/`(define x 1)`/`(defiNE x 1)`/... is ok.
 
 6. History variable (procedure): Reuse the returned procedure in REPL:
 
