@@ -197,3 +197,9 @@ Section 1.3
 ;>- test with `(cont-frac (lambda (x) 1.0) (lambda (x) 1.0) 100)` to get approximate golden ratio
 
 
+#| 
+Section 1.3.4 procedures as returned values 
+|#
+
+
+
