@@ -17,3 +17,26 @@
 
 ## **recursive procedure** v.s. **recursive process** 
 
+Not the same thing.
+
+## trouble shooting 
+
+1. error: `The object 10 is not applicable.`
+
+    Check whether a numerical argument is placed in the position of a function (abstraction).
+
+    e.g.
+
+    ```scheme
+    (cond 
+        ((close-enough? mid) (mid))         ; fix: remove the parenthesis around the second `mid`
+        ; --snip--
+    )
+    ```
+
+    Parenthesis around the second `mid` make the interpreter view `mid` as an abstraction instead of a numerical value.
+
+    conclusion: BE CAREFUL WITH PARENTHESES. 
+
+    
+

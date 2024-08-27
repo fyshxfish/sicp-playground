@@ -125,6 +125,9 @@ Section 1.3
         )
     )
 
+    (newline)
+    (display x)
+
     (if (close-enough? x (f x)) 
         x
         (search-fixed-point f (f x))
@@ -141,5 +144,56 @@ Section 1.3
         1.0
     )
 )
+
+
+;> E-1.35: find golden ratio by fixed-point 
+
+(define (fi guess)          ; change guess to see how fast it is from guess to fixed point 
+    (search-fixed-point 
+        (lambda (x) (+ 1 (/ 1 x)))
+        guess 
+    )
+)
+
+;> E-1.36
+
+(define (ans guess)
+    (search-fixed-point
+        (lambda (x) (/ (log 1000) (log x)))
+        guess 
+    )
+)
+
+(define (ans_avr guess)     ; less steps
+    (search-fixed-point
+        (lambda (x) (avr x (/ (log 1000) (log x))))
+        guess 
+    )    
+)
+
+;> E-1.37
+
+(define (cont-frac n d k) 
+    (define (inner level value)     ; closure ; iterative 
+        (cond ( (= level k)
+                (inner 
+                    (- level 1) 
+                    (/ (n k) (d k)))
+              )
+              ( (= level 1) 
+                (/ (n 1) (+ (d 1) value))
+              )
+              ( else 
+                (inner 
+                    (- level 1)
+                    (/ (n (- level 1)) (+ (d (- level 1) ) value))  
+                )
+              ) 
+        )
+    )
+    (inner k 0)
+)
+
+;>- test with `(cont-frac (lambda (x) 1.0) (lambda (x) 1.0) 100)` to get approximate golden ratio
 
 
