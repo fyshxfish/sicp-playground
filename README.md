@@ -43,12 +43,12 @@ sudo apt-get install mit-scheme
 
 5. Scheme is case-insensitive.
 
-6. Reuse the returned procedure in REPL:
+6. History variable (procedure): Reuse the returned procedure in REPL:
 
     ```scheme
     1 ]=> (average-dump square)
 
-    ;Value: #[compound-procedure 12]    ; can be reused in subsequent expressions, like `$1` in gdb
+    ;Value: #[compound-procedure 12]    ; can be reused in subsequent expressions, like history variable `$1` in gdb
 
     1 ]=> (#[compound-procedure 12] 10)
 
