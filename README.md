@@ -42,5 +42,11 @@ sudo apt-get install mit-scheme
     Check whether your parentheses are properly matched.
 
 
+## Resources 
+
+- Structure and Interpretation of Computer Programs (Second Edition)
+
+- Lambda-calculus and combinators, an introduction
+
 
 
