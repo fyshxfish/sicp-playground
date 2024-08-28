@@ -29,3 +29,26 @@
 ; (RESTART 2) => Return to read-eval-print level 2.
 ; (RESTART 1) => Return to read-eval-print level 1.
 |#
+
+
+
+(define (square_tree t) (tree_map square t))    ; NO CURRYING?
+
+
+(define (sum_tree_nodes t)
+    (cond ((null? t) 0)     ; 为什么这里要考虑null?
+          ((pair? t) (+ (sum_tree_nodes (car t))
+                        (sum_tree_nodes (cdr t))) )
+          (else t)  
+    )
+)
+
+(define (square_tree t)         ; 而这里不考虑null? 或者这里的不考虑本来就是一种疏忽? 
+    (map (lambda (sub_t) 
+            (if (pair? sub_t)
+                (square_tree sub_t)
+                (* sub_t sub_t)  
+            )
+         ) 
+    t)
+)
