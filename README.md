@@ -28,8 +28,10 @@ sudo apt-get install mit-scheme
 2. Load a scheme file in repl:
 
     ```
-    1 ] => (load "path/to/file")
+    1 ] => (load "path/to/file.scm")
     ```
+    
+    (The suffix `.scm` can be omitted.)
 
 3. Clear the screen: 
 
@@ -68,6 +70,8 @@ sudo apt-get install mit-scheme
     ```
 
     (So what exactly is this compound-procedure? machine code, code evaluated by means of substitute model, or something?)
+
+7. Press ^C once to get **help information**; Press ^C twice to goto the top level REPL. 
 
 
 ## Resources 

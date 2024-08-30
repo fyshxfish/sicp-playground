@@ -300,3 +300,75 @@ Section 2.2
 
 (define x (list 1 2))
 (define y (list 3 4))
+
+
+(define (gene_pairs n)
+    (accumulate append () 
+        (map (lambda (x) 
+                (map (lambda (k) (list k x))
+                     (enum_inteval 1 (- x 1))
+                )
+             )
+            (enum_inteval 1 n)
+        )
+    )
+)
+
+(define x (gene_pairs 4))
+
+(define (flatmap proc seq)
+    (accumulate append () (map proc seq))
+)
+
+(define (gene_pairz n)
+    (flatmap (lambda (x) 
+                (map (lambda (y) (list y x))
+                     (enum_inteval 1 (- x 1)) 
+                )
+             ) 
+             (enum_inteval 1 n))
+)
+
+(define x (gene_pairz 6))
+
+(define (prime_pair? pair)
+    (prime? (+ (car pair) (cdr pair)))
+)
+
+(define (prime? x)
+    (define (divisible? y)
+        (= 0 (remainder x y))
+    )
+   
+    (define (iter_biggest_divisor y)
+        (cond ((= y 1) 1)
+              ((divisible? y) y)
+              (else (iter_biggest_divisor (- y 1)))
+        )
+    )
+
+    (if (= x 1)     ; or `if (or (= x 1) (= x 2))`, both are ok
+        #t
+        (let ((biggest_divisor (iter_biggest_divisor (quotient x 2)) ))
+             ; (display biggest_divisor)
+             (if (= biggest_divisor 1)
+                 #t
+                 #f
+             )
+        )
+    )
+)
+
+
+(define (prime_sum? p)
+    (prime? (+ (car p) (cadr p) ))
+)
+
+(define (make_pair_sum p)
+    (list (car p) (cadr p) (+ (car p) (cadr p)))
+)
+
+(define (prime_sum_pairs n)     ; (prime_sum_pairs 6)
+    (map make_pair_sum (filter prime_sum? (gene_pairz n)))
+)
+
