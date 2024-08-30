@@ -2,18 +2,21 @@
 -- permutations [] = [[]]
 -- permutations xs = map (\x -> map (x:) (permutations (removeByElem x xs))) xs [to fix]
 
-permutations :: (Eq a) => [a] -> [[a]]
+permutations :: Eq a => [a] -> [[a]]
 permutations [] = [[]]
 permutations xs = do
     x <- xs 
-    perm <- permutations (removeByElem x xs)
+    perm <- permutations $ removeByElem' x xs
     return (x: perm)
 
-removeByElem :: (Eq a) => a -> [a] -> [a]
+removeByElem :: Eq a => a -> [a] -> [a]
 removeByElem _ [] = []
 removeByElem x (y:ys) 
-    | (x == y)  = ys
+    | x == y  = ys
     | otherwise = y:(removeByElem x ys)
+
+removeByElem' :: Eq a => a -> [a] -> [a]
+removeByElem' x = filter (/= x)
 
 removeById :: Int -> [a] -> [a]
 removeById id xs = 
