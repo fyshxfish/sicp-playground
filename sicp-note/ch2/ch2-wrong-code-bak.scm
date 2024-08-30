@@ -82,3 +82,8 @@
     )
 )
 
+; imperative code in fp
+
+(define (union s1 s2)
+    (map (lambda (x) (adjoin x s2)) s1)
+)
