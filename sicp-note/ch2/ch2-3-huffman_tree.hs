@@ -13,9 +13,9 @@ getWeight (Node _ _ _ w) = w
 
 adjoinTree :: HuffmanTree a  -> [HuffmanTree a] -> [HuffmanTree a]
 adjoinTree t [] = [t]
-adjoinTree t (t':ts) 
+adjoinTree t (t': ts) 
     | w < w'   = t: t': ts 
-    | otherwise = t' : (adjoinTree t ts)  
+    | otherwise = t': (adjoinTree t ts)  
     where w  = getWeight t 
           w' = getWeight t' 
 
@@ -35,7 +35,7 @@ makeNode (Node l1 r1 ss1 w1) (Node l2 r2 ss2 w2) = Node (Node l1 r1 ss1 w1) (Nod
 constructHuffTree :: [HuffmanTree a] -> HuffmanTree a
 constructHuffTree [] = Empty
 constructHuffTree [t] = t       -- singleton leaf 
-constructHuffTree (x:y:ts) = constructHuffTree (moveFirstNode ((makeNode x y): ts)) 
+constructHuffTree (x:y:ts) = constructHuffTree $ moveFirstNode $ (makeNode x y): ts
 
 initAndConstructHuffTree :: [HuffmanTree a] -> HuffmanTree a
 initAndConstructHuffTree = constructHuffTree . initLeafs 
