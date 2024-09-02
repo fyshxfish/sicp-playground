@@ -1,22 +1,6 @@
--- Node 
---     (Node 
---         (Leaf B 6) 
---         (Node 
---             (Leaf E 3) 
---             (Node 
---                 (Leaf G 1) 
---                 (Leaf F 2) [G,F] 3
---             ) [E,G,F] 6
---         ) [B,E,G,F] 12) 
---     (Node (Leaf A 8) 
---           (Node (Leaf D 4) (Leaf C 5) 
---            [D,C] 9
---           ) 
---      [A,D,C] 17
---     ) 
-    
---     [B,E,G,F,A,D,C] 29
+Node (Node (Leaf B 6) (Node (Leaf E 3) (Node (Leaf G 1) (Leaf F 2) [G,F] 3) [E,G,F] 6) [B,E,G,F] 12) (Node (Leaf A 8) (Node (Leaf D 4) (Leaf C 5) [D,C] 9) [A,D,C] 17) [B,E,G,F,A,D,C] 29
 
+: 
 
                   Node [B,E,G,F,A,D,C] 29
                   /                     \
@@ -28,10 +12,8 @@
                            /  \
                  Leaf G 1 Leaf F 2
 
--- Node (Node (Leaf B 6) (Node (Leaf E 3) (Node (Leaf G 1) (Leaf F 2) [G,F] 3) [E,G,F] 6) [B,E,G,F] 12) (Node (Leaf A 8) (Node (Leaf D 4) (Leaf C 5) [D,C] 9) [A,D,C] 17) [B,E,G,F,A,D,C] 29
 
-
-过度匹配
+错误记录 - 过度匹配:
 
 getCode' :: HuffmanTree a -> Bits -> [(a, Bits)]
 getCode' (Leaf s _) rec = 
