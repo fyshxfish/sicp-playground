@@ -1,18 +1,47 @@
-Node 
-    (Node 
-        (Leaf B 6) 
-        (Node 
-            (Leaf E 3) 
-            (Node 
-                (Leaf G 1) 
-                (Leaf F 2) [G,F] 3
-            ) [E,G,F] 6
-        ) [B,E,G,F] 12) 
-    (Node (Leaf A 8) 
-          (Node (Leaf D 4) (Leaf C 5) 
-           [D,C] 9
-          ) 
-     [A,D,C] 17
-    ) 
+-- Node 
+--     (Node 
+--         (Leaf B 6) 
+--         (Node 
+--             (Leaf E 3) 
+--             (Node 
+--                 (Leaf G 1) 
+--                 (Leaf F 2) [G,F] 3
+--             ) [E,G,F] 6
+--         ) [B,E,G,F] 12) 
+--     (Node (Leaf A 8) 
+--           (Node (Leaf D 4) (Leaf C 5) 
+--            [D,C] 9
+--           ) 
+--      [A,D,C] 17
+--     ) 
     
-    [B,E,G,F,A,D,C] 29
+--     [B,E,G,F,A,D,C] 29
+
+
+                  Node [B,E,G,F,A,D,C] 29
+                  /                     \
+     Node [B,E,G,F] 12              Node [A,D,C] 17
+          /            \               /           \
+    Leaf B 6    Node [E,G,F] 6    Leaf A 8    Node [D,C] 9
+                    /      \                   /     \
+         Leaf E 3   Node [G,F] 3     Leaf D 4  Leaf C 5
+                           /  \
+                 Leaf G 1 Leaf F 2
+
+-- Node (Node (Leaf B 6) (Node (Leaf E 3) (Node (Leaf G 1) (Leaf F 2) [G,F] 3) [E,G,F] 6) [B,E,G,F] 12) (Node (Leaf A 8) (Node (Leaf D 4) (Leaf C 5) [D,C] 9) [A,D,C] 17) [B,E,G,F,A,D,C] 29
+
+
+过度匹配
+
+getCode' :: HuffmanTree a -> Bits -> [(a, Bits)]
+getCode' (Leaf s _) rec = 
+    [(s, rec)]
+getCode' (Node (Leaf s1 _) (Leaf s2 _) _ _) rec = 
+    [(s1, rec ++ [L]), (s2, rec ++ [R])]
+getCode' (Node (Leaf s' _) (Node lhs rhs _ _) _ _) rec = 
+    [(s', rec ++ [L])] ++ getCode' lhs (rec++[R]) ++ getCode' rhs (rec++[R])
+getCode' (Node (Node lhs rhs _ _) (Leaf s' _) _ _) rec = 
+    getCode' lhs (L:rec) ++ getCode' rhs (rec++[L]) ++ [(s', rec ++ [R])]
+getCode' (Node (Node lhs1 rhs1 _ _) (Node lhs2 rhs2 _ _)  _ _) rec = 
+    getCode' lhs1 (rec++[L]) ++ getCode' rhs1 (rec++[L]) ++ getCode' lhs2 (rec++[R]) ++ getCode' rhs2 (rec++[R])
+
