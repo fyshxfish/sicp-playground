@@ -41,6 +41,7 @@
 
 
 ; ((fls 'or) tru) 
+; ((tru 'or) fls) 
 ; ((((fls 'or) tru) 'and) fls)
 
 (define (logic op x y) ((x op) y))
